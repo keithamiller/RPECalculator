@@ -76,6 +76,10 @@ class RPEViaTopSetVC: UIViewController,UIPickerViewDataSource, UIPickerViewDeleg
     }
     
     func calculateDesiredWeight(){
+        if(completedWeight.text == ""){
+            completedWeight.text = ""
+            return
+        }
         let tempReps = pickerData[repComponent][repsAndRpePicker.selectedRow(inComponent: repComponent)]
         let tempRpe = pickerData[rpeComponent][repsAndRpePicker.selectedRow(inComponent: rpeComponent)]
         userRpe.reps = Double(tempReps)!
@@ -93,7 +97,6 @@ class RPEViaTopSetVC: UIViewController,UIPickerViewDataSource, UIPickerViewDeleg
         let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
         keyboardToolbar.items = [flexBarButton, doneBarButton]
         completedWeight.inputAccessoryView = keyboardToolbar
-        
     }
     
     

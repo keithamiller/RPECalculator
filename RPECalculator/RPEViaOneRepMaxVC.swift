@@ -72,6 +72,7 @@ class RPEViaOneRepMaxVC: UIViewController, UIPickerViewDelegate, UIPickerViewDat
         guard let oneRepMaxWeight = Double(oneRepMax.text!) else{
             print("Executing Gaurd")
             userRpe.oneRepMax = 0.0
+            weightDisplay.text = ""
             return
         }
         let tempReps = pickerData[repComponent][repsAndRpePicker.selectedRow(inComponent: repComponent)]

@@ -24,6 +24,7 @@ class RoundingScreenVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
         roundingUnitPicker.selectRow(currentIndex!, inComponent: 0, animated: false)
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(RoundingScreenVC.dismissKeyboard))
         view.addGestureRecognizer(tap)
+        setDoneOnKeyboard()
         // Do any additional setup after loading the view.
     }
     
@@ -54,6 +55,15 @@ class RoundingScreenVC: UIViewController, UIPickerViewDelegate, UIPickerViewData
             UserDefaults.standard.set(roundingTo, forKey: "rounding")
         }
         dismiss(animated: true, completion: nil)
+    }
+    
+    func setDoneOnKeyboard() {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit()
+        let flexBarButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneBarButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(dismissKeyboard))
+        keyboardToolbar.items = [flexBarButton, doneBarButton]
+        roundTo.inputAccessoryView = keyboardToolbar
     }
     
 

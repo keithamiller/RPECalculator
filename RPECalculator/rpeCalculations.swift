@@ -43,6 +43,9 @@ class rpeMax: NSObject{
 extension Double {
     /// Rounds the double to decimal places value
     func rounded(viaRoundingNumber number:Double, direction: String) -> Double {
+        if(number <= 0){
+            return self
+        }
         let mod = Int(self/number)
         let baseNumber = Double(mod) * number
         if(baseNumber == self){
